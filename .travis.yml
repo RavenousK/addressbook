@@ -3,3 +3,9 @@ install:
   - mvn install
 jdk:
   - oraclejdk8
+deploy:
+  provider: heroku
+  api_key:
+    secure: "9d6411e0-6d70-44c2-a405-25126b3bd349"
+
+ 
