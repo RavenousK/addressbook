@@ -14,21 +14,22 @@ import java.util.Date;
 // Backend DTO class. This is just a typical Java backend implementation
 // class and nothing Vaadin specific.
 public class Contact implements Serializable, Cloneable {
-
+ 
+ public static final long HOUR = 3600*1000;
     private Long id;
 
     private String firstName = "";
     private String lastName = "";
-    private String phone = "";
-    private String email = "";
-    private Date birthDate;
-
+    private String task = "";
+    private Date startDate;
+    private long endDate;
+    
     public Long getId() {
-        return id;
+     return id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+     this.id = id;
     }
 
     public String getFirstName() {
@@ -47,28 +48,30 @@ public class Contact implements Serializable, Cloneable {
         this.lastName = lastName;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getTask() {
+        return task;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setTask(String task) {
+        this.task = task;
     }
 
-    public String getEmail() {
-        return email;
+   
+    public long getStartDate() {
+        return startDate.getTime();
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+    
+
+    public long getEndDate() {
+     return (startDate.getTime() + 2 * HOUR);
     }
 
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setEndDate(long endDate) {
+     this.endDate = endDate;
     }
 
     @Override
@@ -82,9 +85,9 @@ public class Contact implements Serializable, Cloneable {
 
     @Override
     public String toString() {
-        return "Contact{" + "id=" + id + ", firstName=" + firstName
-                + ", lastName=" + lastName + ", phone=" + phone + ", email="
-                + email + ", birthDate=" + birthDate + '}';
+        return "Task{" + " id " + id + ", firstName=" + firstName
+                + ", lastName=" + lastName + ", phone=" + task + ", email="
+                + task + ", startDate=" + startDate + ", endDate=" + endDate +'}';
     }
 
 }
